@@ -1,0 +1,5 @@
+name: Flow
+version: ${project.version}
+author: Valaphee
+main: com.valaphee.flow.Flow
+api-version: 1.16
