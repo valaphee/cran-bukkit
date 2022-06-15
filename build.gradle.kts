@@ -19,8 +19,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("com.github.johnrengelman.shadow") version "7.0.0"
     id("com.palantir.git-version") version "0.12.3"
-    kotlin("jvm") version "1.6.21"
-    id("net.linguica.maven-settings") version "0.5"
+    kotlin("jvm") version "1.7.0"
+    kotlin("kapt") version "1.7.0"
+    `maven-publish`
     signing
 }
 
@@ -36,10 +37,17 @@ repositories {
 
 dependencies {
     compileOnly("com.tuinity:tuinity:1.16.5-R0.1-SNAPSHOT")
-    implementation("com.valaphee:flow:0.0.1.0")
-    implementation("com.valaphee:flow-meta:0.0.1.0")
-    implementation("com.valaphee:flow-svc:0.0.1.0")
+
+    implementation("com.valaphee:cran-spec:0.0.2.7")
+    kapt("com.valaphee:cran-spec:0.0.2.7")
+
+    implementation("com.valaphee:cran-meta:0.0.2.7")
+    implementation("com.valaphee:cran-pkg-base-impl:0.0.2.7")
     implementation("io.github.classgraph:classgraph:4.8.146")
+    implementation("com.fasterxml.jackson.module:jackson-module-guice:2.13.3")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3")
+    implementation("com.google.inject:guice:5.1.0")
+    implementation("com.hazelcast:hazelcast:5.1.1")
 }
 
 tasks {
@@ -54,7 +62,7 @@ tasks {
 
     withType<Test> { useJUnitPlatform() }
 
-    shadowJar { archiveName = "flow.jar" }
+    shadowJar { archiveName = "cran.jar" }
 }
 
 signing { useGpgCmd() }

@@ -14,4 +14,23 @@
  * limitations under the License.
  */
 
-rootProject.name = "cran-bukkit"
+package com.valaphee.cran.node.command
+
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.valaphee.cran.node.Node
+import com.valaphee.cran.node.Und
+import com.valaphee.cran.spec.NodeDecl
+import com.valaphee.cran.spec.Out
+
+/**
+ * @author Kevin Ludwig
+ */
+@NodeDecl("Command/Commands")
+class Commands(
+    type: String,
+    @get:Out ("" , Und) @get:JsonProperty("out") val out: Int,
+) : Node(type) {
+    init {
+        out requires nothing
+    }
+}

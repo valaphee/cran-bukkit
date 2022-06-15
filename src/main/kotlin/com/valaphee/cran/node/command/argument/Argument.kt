@@ -14,4 +14,22 @@
  * limitations under the License.
  */
 
-rootProject.name = "cran-bukkit"
+package com.valaphee.cran.node.command.argument
+
+import com.valaphee.cran.node.Node
+
+/**
+ * @author Kevin Ludwig
+ */
+abstract class Argument(
+    type: String,
+) : Node(type) {
+    abstract val name: String
+    abstract val `in`: Int
+    abstract val out: Int
+    abstract val outExecute: Int
+
+    /*init {
+        out requires `in`
+    }*/
+}

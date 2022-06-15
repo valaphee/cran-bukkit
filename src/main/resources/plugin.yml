@@ -1,5 +1,5 @@
-name: Flow
+name: Cran
 version: ${project.version}
 author: Valaphee
-main: com.valaphee.flow.Flow
+main: com.valaphee.cran.Cran
 api-version: 1.16

@@ -14,4 +14,19 @@
  * limitations under the License.
  */
 
-rootProject.name = "cran-bukkit"
+package com.valaphee.cran.impl.command
+
+import net.minecraft.server.v1_16_R3.CommandListenerWrapper
+import kotlin.coroutines.AbstractCoroutineContextElement
+import kotlin.coroutines.CoroutineContext
+
+val CoroutineContext.commandContext get() = checkNotNull(get(CommandContext))
+
+/**
+ * @author Kevin Ludwig
+ */
+class CommandContext(
+    val commandContext: com.mojang.brigadier.context.CommandContext<CommandListenerWrapper>
+) : AbstractCoroutineContextElement(CommandContext) {
+    companion object Key : CoroutineContext.Key<CommandContext>
+}
